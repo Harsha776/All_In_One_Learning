@@ -1,12 +1,18 @@
 package com.example.allinonelearning.room
 
 import android.content.Context
+import com.example.allinonelearning.di.qualifier.ApplicationContext
+import com.example.allinonelearning.di.qualifier.DatabaseInfo
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RoomDB(context: Context,dbName:String,version:Int) {
+@Singleton
+class RoomDB @Inject constructor(@ApplicationContext context: Context,
+                                 @DatabaseInfo dbName:String) {
 
     val context=context
     val dbName=dbName
-    val version=version
+
 
     fun getBaseUrl():String{
         return dbName
