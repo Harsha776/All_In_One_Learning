@@ -5,6 +5,8 @@ import com.example.allinonelearning.MyApplication
 import com.example.allinonelearning.di.qualifier.ApplicationContext
 import com.example.allinonelearning.di.qualifier.DatabaseInfo
 import com.example.allinonelearning.di.qualifier.NetworkInfo
+import com.example.allinonelearning.network.NetWorkService
+import com.example.allinonelearning.network.Networking
 import dagger.Module
 import dagger.Provides
 
@@ -41,5 +43,10 @@ class ApplicationModule(myApplication: MyApplication) {
     @Provides
     fun getRoomString():String{
         return "Example.db"
+    }
+
+    @Provides
+    fun provideNetworkService():NetWorkService{
+        return Networking.createInstance()
     }
 }

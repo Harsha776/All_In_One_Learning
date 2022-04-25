@@ -4,6 +4,7 @@ import android.app.Application
 import com.example.allinonelearning.di.components.ApplicationComponent
 import com.example.allinonelearning.di.components.DaggerApplicationComponent
 import com.example.allinonelearning.di.module.ApplicationModule
+import com.example.allinonelearning.network.NetWorkService
 import com.example.allinonelearning.network.Networking
 import com.example.allinonelearning.room.RoomDB
 import javax.inject.Inject
@@ -11,7 +12,7 @@ import javax.inject.Inject
 class MyApplication: Application() {
 
     lateinit var applicationComponent: ApplicationComponent
-    @Inject lateinit var networking: Networking
+    @Inject lateinit var networking: NetWorkService
     @Inject lateinit var roomDB: RoomDB
 
     override fun onCreate() {

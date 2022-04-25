@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
             .applicationComponent((application as (MyApplication)).applicationComponent)
             .activityModule(ActivityModule(this))
             .build().inject(this)
-        tvText.setText(mainViewModel.getData())
+        tvText.setText("mainViewModel.getData()")
+        mainViewModel.getData()
     }
 }

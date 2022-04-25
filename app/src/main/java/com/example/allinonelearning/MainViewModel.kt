@@ -1,13 +1,25 @@
 package com.example.allinonelearning
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.allinonelearning.network.Networking
+import com.example.allinonelearning.network.NetWorkService
 import com.example.allinonelearning.room.RoomDB
-import javax.inject.Inject
+import io.reactivex.android.schedulers.AndroidSchedulers
 
-class MainViewModel(val networking: Networking,val roomDB: RoomDB):ViewModel() {
 
-    fun getData():String{
-     return networking.getBaseUrl()
+import io.reactivex.schedulers.Schedulers
+
+class MainViewModel(val networking: NetWorkService,val roomDB: RoomDB):ViewModel() {
+
+    fun getData(){
+     networking.doGetListResources()
+         .subscribeOn(Schedulers.io())
+         .observeOn(AndroidSchedulers.mainThread())
+         .subscribe({
+             Log.d("TAG", "getData: "+it)
+
+         },{
+
+         })
     }
 }

@@ -9,6 +9,7 @@ import com.example.allinonelearning.MainViewModel
 import com.example.allinonelearning.di.qualifier.ActivityContext
 import com.example.allinonelearning.di.scope.ActivityScope
 import com.example.allinonelearning.factory.ViewModelFactory
+import com.example.allinonelearning.network.NetWorkService
 import com.example.allinonelearning.network.Networking
 import com.example.allinonelearning.room.RoomDB
 import dagger.Module
@@ -26,7 +27,7 @@ class ActivityModule(activity: Activity) {
 
         @ActivityScope
         @Provides
-        fun getMainViewModule(networking: Networking,roomDB: RoomDB)
+        fun getMainViewModule(networking: NetWorkService,roomDB: RoomDB)
         :MainViewModel {
             return ViewModelProvider(activity as FragmentActivity, ViewModelFactory(MainViewModel::class) {
                 MainViewModel(networking, roomDB)
