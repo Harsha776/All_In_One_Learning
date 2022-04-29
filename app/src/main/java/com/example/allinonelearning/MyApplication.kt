@@ -6,6 +6,8 @@ import com.example.allinonelearning.di.components.DaggerApplicationComponent
 import com.example.allinonelearning.di.module.ApplicationModule
 import com.example.allinonelearning.network.NetWorkService
 import com.example.allinonelearning.network.Networking
+import com.example.allinonelearning.room.NoteDatabase
+import com.example.allinonelearning.room.NotesDao
 import com.example.allinonelearning.room.RoomDB
 import javax.inject.Inject
 
@@ -23,5 +25,9 @@ class MyApplication: Application() {
 
         applicationComponent.inject(this)
 
+    }
+
+    fun getInstance():NoteDatabase{
+        return NoteDatabase.getDatabase(this)
     }
 }
