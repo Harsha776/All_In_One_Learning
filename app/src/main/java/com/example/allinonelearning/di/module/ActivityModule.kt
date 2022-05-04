@@ -10,13 +10,15 @@ import com.example.allinonelearning.di.qualifier.ActivityContext
 import com.example.allinonelearning.di.scope.ActivityScope
 import com.example.allinonelearning.factory.ViewModelFactory
 import com.example.allinonelearning.network.NetWorkService
-import com.example.allinonelearning.network.Networking
+import com.example.allinonelearning.room.NoteDatabase
 import com.example.allinonelearning.room.RoomDB
+import com.example.allinonelearning.ui.base.BaseActivity
 import dagger.Module
 import dagger.Provides
+import io.reactivex.disposables.CompositeDisposable
 
 @Module
-class ActivityModule(activity: Activity) {
+class ActivityModule(activity: BaseActivity<*>) {
 
     val activity=activity
 
@@ -27,10 +29,10 @@ class ActivityModule(activity: Activity) {
 
         @ActivityScope
         @Provides
-        fun getMainViewModule(networking: NetWorkService,roomDB: RoomDB)
-        :MainViewModel {
-            return ViewModelProvider(activity as FragmentActivity, ViewModelFactory(MainViewModel::class) {
-                MainViewModel(networking, roomDB)
+        fun getMainViewModule(networking: NetWorkService,roomDB: NoteDatabase,compositeDisposable: CompositeDisposable)
+        : MainViewModel {
+            return ViewModelProvider(activity, ViewModelFactory(MainViewModel::class) {
+                MainViewModel(networking, roomDB,compositeDisposable)
             }).get(MainViewModel::class.java)
         }
 

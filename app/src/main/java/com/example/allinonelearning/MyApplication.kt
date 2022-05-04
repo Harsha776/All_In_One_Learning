@@ -16,6 +16,7 @@ class MyApplication: Application() {
     lateinit var applicationComponent: ApplicationComponent
     @Inject lateinit var networking: NetWorkService
     @Inject lateinit var roomDB: RoomDB
+    @Inject lateinit var noteDatabase: NoteDatabase
 
     override fun onCreate() {
         super.onCreate()
@@ -27,7 +28,7 @@ class MyApplication: Application() {
 
     }
 
-    fun getInstance():NoteDatabase{
+    /*fun getInstance():NoteDatabase{
         return NoteDatabase.getDatabase(this)
-    }
+    }*/
 }

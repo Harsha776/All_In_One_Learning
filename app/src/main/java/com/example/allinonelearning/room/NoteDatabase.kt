@@ -17,7 +17,7 @@ abstract class NoteDatabase  : RoomDatabase() {
 
     abstract fun noteDao(): NotesDao
 
-    companion object {
+    /*companion object {
 
         @Volatile
         private var INSTANCE: NoteDatabase? = null
@@ -43,5 +43,5 @@ abstract class NoteDatabase  : RoomDatabase() {
             ).allowMainThreadQueries()
                 .build()
         }
-    }
+    }*/
 }

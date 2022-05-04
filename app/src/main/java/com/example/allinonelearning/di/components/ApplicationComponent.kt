@@ -6,8 +6,10 @@ import com.example.allinonelearning.di.module.ApplicationModule
 import com.example.allinonelearning.di.qualifier.ApplicationContext
 import com.example.allinonelearning.network.NetWorkService
 import com.example.allinonelearning.network.Networking
+import com.example.allinonelearning.room.NoteDatabase
 import com.example.allinonelearning.room.RoomDB
 import dagger.Component
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 
@@ -20,4 +22,8 @@ interface ApplicationComponent {
     fun getNetworkService(): NetWorkService
 
     fun getDatabaseService(): RoomDB
+
+    fun getCompositeDeposite(): CompositeDisposable
+
+    fun getNoteBookInstance():NoteDatabase
 }

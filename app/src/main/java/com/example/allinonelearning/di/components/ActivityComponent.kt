@@ -1,6 +1,5 @@
 package com.example.allinonelearning.di.components
 
-import android.app.Activity
 import com.example.allinonelearning.MainActivity
 import com.example.allinonelearning.di.module.ActivityModule
 import com.example.allinonelearning.di.scope.ActivityScope
